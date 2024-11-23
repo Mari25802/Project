@@ -5,7 +5,7 @@ import { cartContext } from "./CartContext";
 import { useSearch } from "./SearchContext";
 
 export default function Products({ products }) {
-  const { cart, setCart } = useContext(cartContext); // Access cart state
+  const {  setCart } = useContext(cartContext); // Access cart state
   const { search } = useSearch(); // Access search term
   const { Category } = useParams(); // Get category from URL
 
@@ -32,14 +32,14 @@ export default function Products({ products }) {
     <div className="product-container">
         {banner && selectedCategory.map((bann)=>(
             <div className="banner">
-            <img src={`/${banner}`} alt="" />
+            <img src={`${process.env.PUBLIC_URL}/${banner}`} alt="" />
         </div>
         ))}
       {filteredProducts.length > 0 ? (
         filteredProducts.map((product, index) => (
           <div className="product" key={index}>
             <div className="img">
-              <img src={`/${product.Image}`} alt={product.Name} />
+              <img src={`${process.env.PUBLIC_URL}/${product.Image}`} alt={product.Name} />
             </div>
             <div className="content">
               <h1>{truncateName(product.Name, 25)}</h1>
